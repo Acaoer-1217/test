@@ -1,0 +1,25 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: app-zuul
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8100/eureka
+zuul:
+  routes:
+    goods-service:
+      path: /goods-service/**
+      serviceid: app-goods
+    order-service:
+      path: /order-service/**
+      serviceid: app-orders
+    user-service:
+      path: /user-service/**
+      serviceid: app-user
+    admin-service:
+      path: /admin-service/**
+      serviceid: app-admin
